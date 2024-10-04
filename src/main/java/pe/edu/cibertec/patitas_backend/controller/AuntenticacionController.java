@@ -25,11 +25,11 @@ public class AuntenticacionController {
         try {
             String[] datosUsuario = autenticacionService.validarUsuario(loginRequestDTO);
             if (datosUsuario == null){
-                return new LoginResponseDTO("01","Error:Usuario no encontrado","","");
+                return new LoginResponseDTO("01","Error: Usuario no encontrado","","");
             }
             return new LoginResponseDTO("00","",datosUsuario[0], datosUsuario[1]);
         } catch (IOException e) {
-            return new LoginResponseDTO("99","Error:Ocurrio un problema","", "");
+            return new LoginResponseDTO("99","Error: Ocurrio un problema","", "");
         }
 
 
