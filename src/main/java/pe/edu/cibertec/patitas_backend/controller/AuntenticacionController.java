@@ -47,7 +47,7 @@ public class AuntenticacionController {
     @PostMapping("/logout")
     public ResponseEntity<LogoutResponseDTO> logout(@RequestBody LogoutRequestDTO logoutRequestDTO) {
         try {
-            Thread.sleep(Duration.ofSeconds(1));
+            Thread.sleep(Duration.ofSeconds(5));
             autenticacionService.userLogout(logoutRequestDTO);
 
             return ResponseEntity.ok(new LogoutResponseDTO("00", "El Cierre de Sesion fue exitoso", "", ""));
