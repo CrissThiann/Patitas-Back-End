@@ -10,6 +10,7 @@ import pe.edu.cibertec.patitas_backend.service.AutenticacionService;
 
 import java.io.*;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Service
 public class AutenticacionServiceImpl implements AutenticacionService{
@@ -47,16 +48,14 @@ public class AutenticacionServiceImpl implements AutenticacionService{
     }
 
 
-
-
-    private static final String path = "src/main/resources/logout.log";
+    private static final String path = "src/main/resources/logout.txt";
 
     @Override
     public void userLogout(LogoutRequestDTO logoutRequestDTO) throws IOException {
         File file = new File(path);
 
         try(BufferedWriter bw = new BufferedWriter(new BufferedWriter(new FileWriter(file)))) {
-            bw.write(logoutRequestDTO.tipoDocumento() + ";" + logoutRequestDTO.numeroDocumento() + ";" + LocalDate.now() + "\n");
+            bw.write(logoutRequestDTO.tipoDocumento() + ";" + logoutRequestDTO.numeroDocumento() + ";" + LocalDateTime.now() + "\n");
         } catch (IOException e) {
             throw new IOException("Error al escribir en logout.txt", e);
         }
